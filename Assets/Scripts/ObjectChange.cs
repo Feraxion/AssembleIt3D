@@ -7,6 +7,13 @@ public class ObjectChange : MonoBehaviour
 
     public Material matObj;
     Renderer rend;
+    public GameObject cpuObj;
+    public GameObject batteryObj;
+    public GameObject backObj;
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +24,7 @@ public class ObjectChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -25,6 +32,21 @@ public class ObjectChange : MonoBehaviour
         if (other.gameObject.tag == "ChangeBody")
         {
             rend.sharedMaterial = matObj;
+            Destroy(other.gameObject);
+        }
+        if (other.gameObject.tag == "CPU")
+        {
+            cpuObj.SetActive(true);
+            Destroy(other.gameObject);
+        }
+        if (other.gameObject.tag == "Battery")
+        {
+            batteryObj.SetActive(true);
+            Destroy(other.gameObject);
+        }
+        if (other.gameObject.tag == "Backside")
+        {
+            backObj.SetActive(true);
             Destroy(other.gameObject);
         }
     }
