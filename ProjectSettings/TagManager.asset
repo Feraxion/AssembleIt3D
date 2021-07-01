@@ -8,6 +8,9 @@ TagManager:
   - Backside
   - CPU
   - Battery
+  - Screen
+  - Frelectronic
+  - Scelectronic
   layers:
   - Default
   - TransparentFX

@@ -9,8 +9,14 @@ public class ObjectChange : MonoBehaviour
     Renderer rend;
     public GameObject cpuObj;
     public GameObject batteryObj;
-    public GameObject backObj;
+    public GameObject screenObj;  
+    public GameObject frElectronic;
+    public GameObject scElectronic;
+
+    public Animator anim;
     public GameObject particleVFX;
+    public GameObject endParticleVFX;
+
 
 
 
@@ -57,9 +63,28 @@ public class ObjectChange : MonoBehaviour
                 child.GetComponent<ParticleSystem>().Play();
             }
         }
-        if (other.gameObject.tag == "Backside")
+        if (other.gameObject.tag == "Screen")
         {
-            backObj.SetActive(true);
+            screenObj.SetActive(true);
+            Destroy(other.gameObject);
+            foreach (Transform child in endParticleVFX.transform)
+            {
+                child.GetComponent<ParticleSystem>().Play();
+            }
+            anim.SetTrigger("animTrig");
+        }
+        if (other.gameObject.tag == "Frelectronic")
+        {
+            frElectronic.SetActive(true);
+            Destroy(other.gameObject);
+            foreach (Transform child in particleVFX.transform)
+            {
+                child.GetComponent<ParticleSystem>().Play();
+            }
+        }
+        if (other.gameObject.tag == "Scelectronic")
+        {
+            scElectronic.SetActive(true);
             Destroy(other.gameObject);
             foreach (Transform child in particleVFX.transform)
             {
