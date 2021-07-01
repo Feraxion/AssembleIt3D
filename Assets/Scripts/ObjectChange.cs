@@ -10,6 +10,7 @@ public class ObjectChange : MonoBehaviour
     public GameObject cpuObj;
     public GameObject batteryObj;
     public GameObject backObj;
+    public GameObject particleVFX;
 
 
 
@@ -33,21 +34,37 @@ public class ObjectChange : MonoBehaviour
         {
             rend.sharedMaterial = matObj;
             Destroy(other.gameObject);
+            foreach (Transform child in particleVFX.transform)
+            {
+                child.GetComponent<ParticleSystem>().Play();
+            }
         }
         if (other.gameObject.tag == "CPU")
         {
             cpuObj.SetActive(true);
             Destroy(other.gameObject);
+            foreach (Transform child in particleVFX.transform)
+            {
+                child.GetComponent<ParticleSystem>().Play();
+            }
         }
         if (other.gameObject.tag == "Battery")
         {
             batteryObj.SetActive(true);
             Destroy(other.gameObject);
+            foreach (Transform child in particleVFX.transform)
+            {
+                child.GetComponent<ParticleSystem>().Play();
+            }
         }
         if (other.gameObject.tag == "Backside")
         {
             backObj.SetActive(true);
             Destroy(other.gameObject);
+            foreach (Transform child in particleVFX.transform)
+            {
+                child.GetComponent<ParticleSystem>().Play();
+            }
         }
     }
 }
